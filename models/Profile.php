@@ -1,6 +1,6 @@
 <?php
 
-	namespace abhimanyu\user\models;
+	namespace mavs1971\user\models;
 
 	use yii\db\ActiveRecord;
 

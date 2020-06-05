@@ -6,9 +6,9 @@
 	 * Time: 18:19
 	 */
 
-	namespace abhimanyu\user\controllers;
+	namespace mavs1971\user\controllers;
 
-	use abhimanyu\user\models\Profile;
+	use mavs1971\user\models\Profile;
 	use Yii;
 	use yii\filters\AccessControl;
 	use yii\web\Controller;

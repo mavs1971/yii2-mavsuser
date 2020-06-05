@@ -6,10 +6,10 @@
 	 * Time: 22:08
 	 */
 
-	namespace abhimanyu\user\controllers;
+	namespace mavs1971\user\controllers;
 
-	use abhimanyu\user\models\Profile;
-	use abhimanyu\user\models\UserIdentity;
+	use mavs1971\user\models\Profile;
+	use mavs1971\user\models\UserIdentity;
 	use Yii;
 	use yii\filters\AccessControl;
 	use yii\web\Controller;
@@ -54,10 +54,10 @@
 		{
 			if (isset($_FILES['avatar'])) {
 				$avatar = $_FILES['avatar'];
-				$path = '../vendor/abhi1693/yii2-user/uploads/profile_image/';
+				$path = '../vendor/mavs1971/yii2-mavsuser/uploads/profile_image/';
 
 				$model         = Profile::findOne(['uid' => Yii::$app->user->getId()]);
-				$model->avatar = 'vendor/abhi1693/yii2-user/uploads/profile_image/' . $avatar['name'];
+				$model->avatar = 'vendor/mavs1971/yii2-mavsuser/uploads/profile_image/' . $avatar['name'];
 
 				if ($model->save())
 					if (move_uploaded_file($avatar['tmp_name'], $path . $avatar['name']))

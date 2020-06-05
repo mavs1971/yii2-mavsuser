@@ -1,12 +1,12 @@
 <?php
 
-namespace abhimanyu\user\models;
+namespace mavs1971\user\models;
 
 use abhimanyu\installer\helpers\enums\Configuration as Enum;
-use abhimanyu\user\UserModule;
+use mavs1971\user\UserModule;
 use Yii;
 use yii\base\Model;
-
+//use Zelenin\yii\widgets\Recaptcha\validators\RecaptchaValidator;
 
 /**
  * LoginForm is the model behind the login form.
@@ -33,9 +33,27 @@ class AccountLoginForm extends Model
 			// password is validated by validatePassword()
 			['password', 'validatePassword'],
 			// captcha
-			/*['captcha', RecaptchaValidator::className(), 'secret' => Yii::$app->config->get(Enum::RECAPTCHA_SECRET)]*/
+                        // [['captcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => Yii::$app->config->get(Enum::RECAPTCHA_SECRET), 'uncheckedMessage' => 'Por vavor confirme que no es una maquina.']
+			//['captcha', RecaptchaValidator::className(), 'secret' => Yii::$app->config->get(Enum::RECAPTCHA_SECRET)],
+                        ['captcha', 'safe'],
 		];
 	}
+        
+        public function scenarios()
+        {
+            return [
+                'admin'  => [
+                    'username',
+                    'password',
+                   
+                ],
+                'socio'  => [
+                    'username',
+                    'password',
+                    'captcha'
+                ],
+            ];
+        }
 
 	/**
 	 * Validates the password.
@@ -48,9 +66,12 @@ class AccountLoginForm extends Model
 	{
 		if (!$this->hasErrors()) {
 			$user = $this->getUser();
-			if (!$user || !$user->validatePassword($this->password)) {
-				$this->addError($attribute, 'Incorrect username or password.');
-			}
+			if (!$user){
+                            $this->addError($attribute, 'usuario no valido.');
+                        }elseif (!$user->validatePassword($this->password)) {
+				$this->addError($attribute, 'Verifique sus credenciales de acceso.');
+                        }
+			
 		}
 	}
 
@@ -67,7 +88,8 @@ class AccountLoginForm extends Model
 			} elseif (UserModule::$loginType == User::LOGIN_TYPE_USERNAME) {
 				$this->_user = UserIdentity::findByUsername($this->username);
 			} elseif (UserModule::$loginType == User::LOGIN_TYPE_BOTH) {
-				$this->_user = UserIdentity::findByUsernameOrEmail($this->username);
+				$this->_user = UserIdentity::findByEmail($this->username);
+                if ($this->_user) {} else {$this->_user = UserIdentity::findByUsername($this->username);}
 			}
 		}
 
@@ -82,15 +104,18 @@ class AccountLoginForm extends Model
 	public function login()
 	{
 		return $this->validate() ? Yii::$app->user->login($this->getUser(), $this->rememberMe ? UserModule::$rememberMeDuration : 0) : FALSE;
+		//return Yii::$app->user->login($this->getUser());
+
 	}
 
 	public function attributeLabels()
 	{
 		return [
 			'username'   => UserModule::$loginType == User::LOGIN_TYPE_BOTH ?
-				'Email/Username' : (UserModule::$loginType == User::LOGIN_TYPE_EMAIL ? 'Email' : 'Username'),
-			'password'   => 'Password',
-			'rememberMe' => 'Remember Me?'
+			'Email/Username' : (UserModule::$loginType == User::LOGIN_TYPE_EMAIL ? Yii::t('app', 'Email') : Yii::t('app', 'Username')),
+			'password'   => Yii::t('app', 'Password'),
+			'rememberMe' => Yii::t('app', 'Remember Me?'),
+                        'captcha'=>'Verificación acceso',
 		];
 	}
 }

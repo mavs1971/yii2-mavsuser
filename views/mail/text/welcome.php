@@ -10,14 +10,15 @@
 
 	/** @var $user \abhimanyu\user\models\User */
 ?>
-Hello,<br/>
-Click on the following link to activate your account:<br/>
-<?= Html::a('Activate Account', ['//user/registration/confirm', 'id' => $user->id, 'code' => $user->activation_token],
+Bienvenido,<br/>
+solo hace falta que vaya al enlace siguiente para activar su cuenta:<br/>
+<?= Html::a('Activar su cuenta', ['//tiproduccion.dyndns.org/user/registration/confirm', 'id' => $user->id, 'code' => $user->activation_token],
             ['class' => 'btn btn-lg btn-success']) ?>
-Your account on <?= Yii::$app->name ?> has been successfully created. You can use your email address to log in.<br/>
+Su cuenta en <?= Yii::$app->name ?> ha sido creada exitosamente. Los siguientes datos debe utilizar para ingresar al sistema.<br/>
 
-Email Id: <?= $user->email ?><br>
-Username: <?= $user->username ?><br>
-Password: <?= $user->password ?><br/>
+Dirección de correo	: <?= $user->email ?><br>
+Usuario				: <?= $user->username ?><br>
+contraseña			: la creada por ud, se le recomienda luego de activar su cuenta solicitar cambio de contraseña<br/>
 
-P.S. If you received this email by mistake, simply delete it.
+P.D. Si cree haber recibido este error por correo, descarte la información.
+     Si no puede hacer click al enlace copie y pegue en su navegador

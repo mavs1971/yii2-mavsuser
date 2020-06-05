@@ -11,7 +11,7 @@
 	/** @var $this   yii\web\View */
 	/** @var $user \abhimanyu\user\models\User */
 
-	$this->title = 'Account Activation - ' . Yii::$app->name;
+	$this->title = 'Activación de Cuenta - ' . Yii::$app->name;
 
 	echo AlertBlock::widget([
 		                        'delay'           => 5000,

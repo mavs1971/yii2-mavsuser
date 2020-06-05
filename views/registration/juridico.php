@@ -3,8 +3,6 @@
 use kartik\alert\AlertBlock;
 use dosamigos\datepicker\DatePicker;
 use abhimanyu\installer\helpers\enums\Configuration as Enum;
-use yii\helpers\Html;
-use yii\helpers\url;
 
 /** @var $model \abhimanyu\user\models\User */
 /** @var $this \yii\web\View */
@@ -20,12 +18,7 @@ echo AlertBlock::widget([
 
 <div class="container" style="max-width: 400px;margin: 0 auto 20px;text-align: left;">
 	<div class="panel panel-default">
-		<div class="panel-heading"><?= Yii::t('app', 'Sign Up!') ?>
-                    <?= Html::a('Si es usuario Juridico, registrese aqui',
-					Yii::$app->urlManager->createUrl('//user/registration/juridico')) ?>
-                 
-                
-                </div>
+		<div class="panel-heading"><?= Yii::t('app', 'Sign Up!') . '  Socios Juridicos'?></div>
 
 		<div class="panel-body">
 			<?php $form = \yii\widgets\ActiveForm::begin([
@@ -44,37 +37,12 @@ echo AlertBlock::widget([
 			</div>
 
 			<div class="form-group">
-				<?= $form->field($model, 'cedula')->textInput([
+				<?= $form->field($model, 'rif')->textInput([
 					'class'        => 'form-control',
 					'autocomplete' => 'off',
 				]) ?>
 			</div>
 
-			<div class="form-group">
-
-				<?= $form->field($model, 'fecha_nacimiento')->widget(
-				    DatePicker::className(), [
-				        // inline too, not bad
-				         'inline' => false, 
-				         'language' => 'es',
-				         // modify template for custom rendering
-				        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-				        'clientOptions' => [
-				            'autoclose' => true,
-				            'format' => 'dd/mm/yyyy'
-				        ]
-				]);?>				
-			</div>
-
-
-
-			<div class="form-group">
-				<?= $form->field($model, 'apellidos')->textInput([
-					'class'        => 'form-control',
-					'autocomplete' => 'off',
-					'onblur'=>'toUpper(this);',
-				]) ?>
-			</div>
 			<div class="form-group">
 				<?= $form->field($model, 'nombres')->textInput([
 					'class'        => 'form-control',
@@ -96,32 +64,7 @@ echo AlertBlock::widget([
 					'autocomplete' => 'off'
 				]) ?>
 			</div>
-                    <!-- se agregan campos del telefono movil-->
-                         <div class="form-group">
-                             <div class="row">
-                                 <div class="col-sm-4">
-                                     <?= $form->field($model, 'movil_operadora')->dropDownList(
-				[
-					'0416' => '0416',
-					'0426' => '0426',
-					'0414' => '0414',
-					'0424' => '0424',
-					'0412' => '0412',
-				],
-				[
-					'class'   => 'form-control',
-				]) ?>
-                                 </div>
-                                 <div class="col-sm-4">
-                                      <?= $form->field($model, 'movil_numero')->widget(\yii\widgets\MaskedInput::className(), [
-                                            'mask' => '9999999',
-                                        ]) ?>
-                                    
-                                 </div>
-                             </div>
-				
-                             
-			</div>
+
 			<div class="form-group">
 				<?= $form->field($model, 'username')->textInput([
 					'class'        => 'form-control',
@@ -151,7 +94,7 @@ echo AlertBlock::widget([
 			<hr>
 			<div class="row">
 				<div class="col-md-4">
-					<?= \yii\helpers\Html::submitButton(Yii::t('app', 'Register'), ['class' => 'btn btn-primary']) ?>
+					<?= \yii\helpers\Html::submitButton(Yii::t('app', 'Juridico'), ['class' => 'btn btn-primary']) ?>
 				</div>
 			</div>
 
@@ -190,3 +133,4 @@ function toAccion(mystring) {
 
 
 </script>
+

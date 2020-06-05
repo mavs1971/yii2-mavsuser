@@ -6,11 +6,11 @@
  * Time: 18:14
  */
 
-namespace abhimanyu\user\controllers;
+namespace mavs1971\user\controllers;
 
-use abhimanyu\user\models\AccountRecoverPasswordForm;
-use abhimanyu\user\models\User;
-use abhimanyu\user\UserModule;
+use mavs1971\user\models\AccountRecoverPasswordForm;
+use mavs1971\user\models\User;
+use mavs1971\user\UserModule;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -69,12 +69,16 @@ class RecoveryController extends Controller
 	{
 		$model = User::findOne([
 			'id'                   => $id,
-			'password_reset_token' => $code,
-			'status'               => User::STATUS_ACTIVE
+			'password_reset_token' => $code
 		]);
 
 		if ($model == NULL)
-			throw new NotFoundHttpException;
+			throw new \yii\web\HttpException("El enlace para reestablecer su clave del sistema de autogestion ha vencido y/o"
+                                . " ya no esa disponible, solicite una nuevo correo desde la opcion de 'Olvido su clave'");
+                
+                if ($model->status !== User::STATUS_ACTIVE)
+                    throw new \yii\web\HttpException("Su Cuenta no esta activa, si acaba de crear su usuario en el sistema de autogetion recuerde activar la misma desde el enlace enviado a su correo"
+                            . "enviado su correo.");
 
 		$model->scenario = 'reset';
 

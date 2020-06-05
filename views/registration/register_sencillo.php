@@ -51,39 +51,6 @@ echo AlertBlock::widget([
 			</div>
 
 			<div class="form-group">
-
-				<?= $form->field($model, 'fecha_nacimiento')->widget(
-				    DatePicker::className(), [
-				        // inline too, not bad
-				         'inline' => false, 
-				         'language' => 'es',
-				         // modify template for custom rendering
-				        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-				        'clientOptions' => [
-				            'autoclose' => true,
-				            'format' => 'dd/mm/yyyy'
-				        ]
-				]);?>				
-			</div>
-
-
-
-			<div class="form-group">
-				<?= $form->field($model, 'apellidos')->textInput([
-					'class'        => 'form-control',
-					'autocomplete' => 'off',
-					'onblur'=>'toUpper(this);',
-				]) ?>
-			</div>
-			<div class="form-group">
-				<?= $form->field($model, 'nombres')->textInput([
-					'class'        => 'form-control',
-					'autocomplete' => 'off',
-					'onblur'=>'toUpper(this);',
-				]) ?>
-			</div>
-
-			<div class="form-group">
 				<?= $form->field($model, 'email')->textInput([
 					'class'        => 'form-control',
 					'autocomplete' => 'off'
@@ -96,7 +63,7 @@ echo AlertBlock::widget([
 					'autocomplete' => 'off'
 				]) ?>
 			</div>
-                    <!-- se agregan campos del telefono movil-->
+<!-- se agregan campos del telefono movil-->
                          <div class="form-group">
                              <div class="row">
                                  <div class="col-sm-4">
@@ -122,6 +89,7 @@ echo AlertBlock::widget([
 				
                              
 			</div>
+
 			<div class="form-group">
 				<?= $form->field($model, 'username')->textInput([
 					'class'        => 'form-control',

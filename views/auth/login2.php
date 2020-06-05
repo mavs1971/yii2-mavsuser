@@ -6,7 +6,7 @@ use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 //use yii\widgets\ActiveForm;
-//use Zelenin\yii\widgets\Recaptcha\widgets\Recaptcha;
+
 
 /* @var $model \abhimanyu\user\models\AccountLoginForm */
 /* @var $canRegister bool */
@@ -21,23 +21,16 @@ echo AlertBlock::widget([
 ]);
 ?>
 
-<div class="pull-pull-right" style="text-align: left">
-	<div class="panel panel-default pull-right" id="login-form" 
-            style="max-width: 400px;
-            margin: 0 auto 20px;
-           
-            background-color: #ffffff;
-            border: 1px solid black;
-            opacity: 0.6;
-             ">
-		<div class="panel-heading text-center">¡Ingrese al sistema!</div>
+<div class="" style="text-align: left">
+	<div class="panel panel-default" id="login-form" style="max-width: 400px;margin: 0 auto 20px;text-align: left">
+		<div class="panel-heading">¡Ingrese al sistema!</div>
 		<div class="panel-body">
 			<?php $form = ActiveForm::begin([
 				'id'                   => 'login-form2',
 				'enableAjaxValidation' => FALSE,
                                 'validateOnSubmit'=>true,
 			]); ?>
-                    <div class="text-center">
+                    <div class="text-right">
                             <small>
                             <?php
                                 if ($canRegister == 1) {
@@ -52,26 +45,17 @@ echo AlertBlock::widget([
                             </small>
                         </div>
                     
-                    <p class="text-center"><?= 'Por favor, rellene los siguiente campos para iniciar sesión:' ?></p>
+                        <p><?= Yii::t('app', 'Please fill out the following fields to login:') ?></p>
                         
 
 
-			<div class="form-group" style="text-align: left">
+			<div class="form-group">
 				<?= $form->field($model, 'username')->textInput(['class' => 'form-control']) ?>
 			</div>
-			<div class="form-group" style="text-align: left">
+			<div class="form-group">
 				<?= $form->field($model, 'password')->passwordInput(['class' => 'form-control']) ?>
 			</div>
-                        <hr>
-                         <div class="form-group">
-				<?php /*
-                            $form->field($model, 'captcha')->widget(Recaptcha::className(), [
-					'clientOptions' => [
-						'data-sitekey' => Yii::$app->config->get(Enum::RECAPTCHA_SITE_KEY)
-					]
-				]) */?>
-			</div>
-			
+                       
 			<hr>
                         <!--div class="checkbox">
 				<?php //= $form->field($model, 'rememberMe')->checkbox() ?>

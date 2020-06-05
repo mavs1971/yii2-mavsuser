@@ -6,7 +6,7 @@
 	 * Time: 12:37
 	 */
 
-	namespace abhimanyu\user\models;
+	namespace mavs1971\user\models;
 
 	use yii\db\ActiveRecord;
 

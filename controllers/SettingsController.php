@@ -6,11 +6,11 @@
  * Time: 09:53
  */
 
-namespace abhimanyu\user\controllers;
+namespace mavs1971\user\controllers;
 
 use abhimanyu\installer\helpers\Configuration;
 use abhimanyu\installer\helpers\enums\Configuration as Enum;
-use abhimanyu\user\models\SettingsForm;
+use mavs1971\user\models\SettingsForm;
 use Yii;
 use yii\authclient\clients\Facebook;
 use yii\authclient\clients\GitHub;

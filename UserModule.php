@@ -1,6 +1,6 @@
 <?php
 
-namespace abhimanyu\user;
+namespace mavs1971\user;
 
 use abhimanyu\installer\helpers\enums\Configuration as Enum;
 use Yii;

@@ -5,7 +5,7 @@ use kartik\alert\AlertBlock;
 /** @var $model \abhimanyu\user\models\AccountRecoverPasswordForm */
 /** @var $this \yii\web\View */
 
-$this->title = 'Password Recovery - ' . Yii::$app->name;
+$this->title = yii::t('app','Password Recovery - ') . Yii::$app->name;
 
 echo AlertBlock::widget([
 	'delay'           => 5000,
@@ -24,7 +24,7 @@ echo AlertBlock::widget([
 					'id'                   => 'recover-password-form',
 					'enableAjaxValidation' => FALSE
 				]); ?>
-				<p><?= Yii::t('user', 'Just enter your e-mail address. We´ll send you a new one!') ?></p>
+				<p><?= Yii::t('app', 'Just enter your e-mail address. We´ll send you a new one!') ?></p>
 
 				<div class="form-group">
 					<?= $form->field($model, 'email')->textInput([
@@ -35,7 +35,7 @@ echo AlertBlock::widget([
 
 					<!-- todo add captcha -->
 					<hr>
-					<?= \yii\helpers\Html::submitButton(Yii::t('user', 'Get new Password'), ['class' => 'btn btn-primary']) ?><?= \yii\helpers\Html::a(Yii::t('user', 'Back'), Yii::$app->urlManager->createUrl('//'), ['class' => 'pull-right']) ?>
+					<?= \yii\helpers\Html::submitButton(Yii::t('app', 'Get new Password'), ['class' => 'btn btn-primary']) ?><?= \yii\helpers\Html::a(Yii::t('user', 'Back'), Yii::$app->urlManager->createUrl('//'), ['class' => 'pull-right']) ?>
 				</div>
 
 				<?php $form::end(); ?>

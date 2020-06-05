@@ -6,7 +6,7 @@
  * Time: 10:08
  */
 
-namespace abhimanyu\user\models;
+namespace mavs1971\user\models;
 
 use yii\base\Model;
 

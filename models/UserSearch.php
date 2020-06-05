@@ -1,6 +1,6 @@
 <?php
 
-	namespace abhimanyu\user\models;
+	namespace mavs1971\user\models;
 
 	use Yii;
 	use yii\data\ActiveDataProvider;
@@ -22,8 +22,10 @@
 		{
 			$query        = User::find();
 			$dataProvider = new ActiveDataProvider([
-				                                       'query' => $query,
-			                                       ]);
+                               'query' => $query,
+                        ]);
+                        
+                        $this->load($params);
 			if (!($this->load($params) && $this->validate())) {
 				return $dataProvider;
 			}

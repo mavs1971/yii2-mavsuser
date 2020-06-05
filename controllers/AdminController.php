@@ -6,12 +6,12 @@
  * Time: 14:12
  */
 
-namespace abhimanyu\user\controllers;
+namespace mavs1971\user\controllers;
 
-use abhimanyu\user\Mailer;
-use abhimanyu\user\models\Profile;
-use abhimanyu\user\models\User;
-use abhimanyu\user\models\UserSearch;
+use mavs1971\user\Mailer;
+use mavs1971\user\models\Profile;
+use mavs1971\user\models\User;
+use mavs1971\user\models\UserSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -47,7 +47,7 @@ class AdminController extends Controller
 	public function actionIndex()
 	{
 		$searchModel = new UserSearch();
-		$dataProvider = $searchModel->search($_GET);
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		return $this->render('index', [
 			'dataProvider' => $dataProvider,

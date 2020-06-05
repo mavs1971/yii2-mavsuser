@@ -6,7 +6,7 @@
  * Time: 23:11
  */
 
-namespace abhimanyu\user\models;
+namespace mavs1971\user\models;
 
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;

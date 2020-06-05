@@ -10,11 +10,11 @@
 
 	/** @var $user \abhimanyu\user\models\User */
 ?>
-Hello,
+Saludos cordiales,
 
-You have recently requested to reset your password. In order to complete your request, we need you to verify that
-you initiated this request. Please click the link below to complete your password reset.
+Ud ha solicitado reestablecer su contraseña. Para poder realizar esta orden, requerimos que confirme que
+Ud fue quien realizó esta solicitud. Por favor vaya al siguiente enlace para completar su requerimiento.
 
-<?= Html::a('Change Password', ['//user/recovery/reset', 'id' => $user->id, 'code' => $user->password_reset_token]) ?>
+<?= Html::a('Cambiar contraseña', ['http://tiproduccion.dyndns.org/user/recovery/reset', 'id' => $user->id, 'code' => $user->password_reset_token]) ?>
 
-P.S. If you did not request to reset your password, please disregard this message. Your account is safe.
+P.S. Si ud. no realizo esta solicitud y considera que este correo es un error, por favor ignorelo. sus datos no seran cambiados.
