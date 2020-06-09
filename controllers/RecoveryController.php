@@ -73,11 +73,11 @@ class RecoveryController extends Controller
 		]);
 
 		if ($model == NULL)
-			throw new \yii\web\HttpException("El enlace para reestablecer su clave del sistema de autogestion ha vencido y/o"
+			throw new \yii\web\NotAcceptableHttpException("El enlace para reestablecer su clave del sistema de autogestion ha vencido y/o"
                                 . " ya no esa disponible, solicite una nuevo correo desde la opcion de 'Olvido su clave'");
                 
                 if ($model->status !== User::STATUS_ACTIVE)
-                    throw new \yii\web\HttpException("Su Cuenta no esta activa, si acaba de crear su usuario en el sistema de autogetion recuerde activar la misma desde el enlace enviado a su correo"
+                    throw new \yii\web\NotAcceptableHttpException("Su Cuenta no esta activa, si acaba de crear su usuario en el sistema de autogetion recuerde activar la misma desde el enlace enviado a su correo"
                             . "enviado su correo.");
 
 		$model->scenario = 'reset';

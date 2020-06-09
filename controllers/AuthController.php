@@ -1,6 +1,6 @@
 <?php
 
-namespace mavs1971v\user\controllers;
+namespace mavs1971\user\controllers;
 
 use mavs1971\user\models\AccountLoginForm;
 use mavs1971\user\models\SocialAccount;
